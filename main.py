@@ -54,6 +54,15 @@ def choice_section():
             print('Invalid Choice')
 
 
+
+def checkall(x):
+        global word
+        for ch in word:
+            if ch not in x:
+                return False
+        return True
+
+	
 def hangThe_man():
     global chances, phase, word
     print('''
@@ -149,12 +158,7 @@ def hangThe_man():
 	|
 	----'''
 
-    def checkall(x):
-        global word
-        for ch in word:
-            if ch not in x:
-                return False
-        return True
+    
 
     print('The word structure is like this: \t', end='')
     for k in word:
@@ -170,8 +174,6 @@ def hangThe_man():
 
         if user_input not in word:
             phase += 1
-        elif user_input in word:
-            anph = 0
 
         for char in word:
             if char in guess:
@@ -186,12 +188,6 @@ def hangThe_man():
             print("You have won the game🎉")
             break
 
-        chances = chances - 1
-
-        # if chances > 1:
-        # 	print(f'Now you have {chances} chances')
-        # elif chances == 1:
-        # 	print(f'You just have {chances} more chance left')
 
         if user_input not in word:
             if phase == 1:
@@ -216,17 +212,6 @@ def hangThe_man():
 def number_chances():
     global chances, phase
 
-    def checkall(x):
-        global word
-        # for ek in li:
-        # 	if ek in word:
-        # 		return True
-        # return False
-        for ch in word:
-            if ch not in x:
-                return False
-        return True
-
     print('The word structure is like this: \t', end='')
     for k in word:
         print('_', end=' ')
@@ -240,7 +225,7 @@ def number_chances():
                 chances += 1
 
         if user_input not in word:
-            phase += 1
+            chances = chances - 1
         for char in word:
             if char in guess:
                 print(char, end=' ')
@@ -254,7 +239,7 @@ def number_chances():
             print("You have won the game🎉")
             break
 
-        chances = chances - 1
+        # chances = chances - 1
 
         if chances > 1:
             print(f'Now you have {chances} chances')
